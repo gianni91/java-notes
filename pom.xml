@@ -9,9 +9,8 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <name>javanotes</name>
-  <description>A simple javanotes.</description>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <description>Java notes for later reference</description>
+  <url>https://www.fezda.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
