@@ -8,6 +8,6 @@ public class EncapsulatedClass {
 	}
 	
 	public void setMyMemberVar (int myParam1) {	// It is common to have a function called get<variable name> to get the variable value in code outside the class
-		myMemberVar = myParam1;
+		this.myMemberVar = myParam1;			// Use this.<variable name> to refer to a member variable within a method, this is sometimes necessary to avoid confusion with any parameter with the same name
 	}
 }
