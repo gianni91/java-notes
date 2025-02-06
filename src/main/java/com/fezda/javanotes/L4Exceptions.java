@@ -50,9 +50,9 @@ public class L4Exceptions {
 	}
 	
 	
-	public static void funcThatThrows (int x) throws Exception {	
+	public static void funcThatThrows (int x) throws Exception {	// Indicate throw at top
 		if (  x < 12  ) {
-			throw new Exception ("Error, blah");
+			throw new Exception ("Error, blah");					// Put throw (or throwable func) in code
 		}
 	}
 	
