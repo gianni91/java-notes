@@ -12,7 +12,7 @@ public class L9Threads {
 		myIThread.start();
 		myIThread.interrupt();
 		
-		// Demo of how 2 threads work simultaneously, alternating output
+		// Demo of how 2 threads work simultaneously, alternating output from counting at different rates
 		Counter1 myCounter1 = new Counter1();
 		Counter2 myCounter2 = new Counter2();
 		myCounter1.start();
@@ -30,9 +30,9 @@ public class L9Threads {
 		public void run () {
 			try {
 				System.out.println("before delay");
-				Thread.sleep(1000);
+				Thread.sleep(1000);							// Pause for 1000 milliseconds
 				System.out.println("after delay");
-			} catch (InterruptedException e) {
+			} catch (InterruptedException e) {				// Accessed if thread object's interrupt method is called
 				return;
 			}
 		}
@@ -42,6 +42,7 @@ public class L9Threads {
 	public static class Counter1 extends Thread {
 		public void run () {
 			try {
+				// Count from 1 to 4, counting every 1/5 second
 				for (int i = 1; i < 5; i++) {
 					Thread.sleep(200);
 					System.out.println("By Counter 1: " + i);
@@ -55,6 +56,7 @@ public class L9Threads {
 	public static class Counter2 extends Thread {
 		public void run () {
 			try {
+				// Count by 10s from 10 to 40, counting every 1/10 second
 				for (int i = 1; i < 5; i++) {
 					Thread.sleep(100);
 					System.out.println("By Counter 2: " + i*10);
