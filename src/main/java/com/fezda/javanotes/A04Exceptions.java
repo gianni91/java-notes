@@ -2,7 +2,7 @@ package com.fezda.javanotes;
 
 import java.io.IOException;
 
-public class L4Exceptions {
+public class A04Exceptions {
 
 	public static void main (String[] args) {
 		

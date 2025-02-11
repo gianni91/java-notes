@@ -3,7 +3,7 @@ package com.fezda.javanotes;
 import com.fezda.myclasses.ChildClass;
 import com.fezda.myclasses.ParentClass;
 
-public class L7Inheritance {
+public class A07Inheritance {
 	public static void main (String [] args) {
 		ChildClass myChildObject = new ChildClass();
 		myChildObject.myMemberVar1 = 5;		// Can access parent public variable

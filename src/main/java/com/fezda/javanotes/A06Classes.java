@@ -8,7 +8,7 @@ import com.fezda.myclasses.ConstructableClass;
 import com.fezda.myclasses.CopyableClass;
 import com.fezda.myclasses.EncapsulatedClass;
 
-public class L6Classes {
+public class A06Classes {
 	
 	public static void main (String[] args) {
 		basicClassTest();

@@ -1,6 +1,6 @@
 package com.fezda.javanotes;
 
-public class L9Threads {
+public class A09Threads {
 	
 	public static void main (String[] args) {
 		// Demo of running simplest thread

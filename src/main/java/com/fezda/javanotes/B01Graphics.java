@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class LsGraphics {
+public class B01Graphics {
 
 	public static void main (String[] args) {
 		JPanel myPanel = new JPanel() {

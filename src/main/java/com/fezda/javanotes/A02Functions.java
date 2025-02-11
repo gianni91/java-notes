@@ -1,6 +1,6 @@
 package com.fezda.javanotes;
 
-public class L2Functions {
+public class A02Functions {
 	public static void main (String [] args) {
 		basicFunction();				// This runs a block of code defined below, named basicFunction
 										// 		running a function this way is known as a function "call"
@@ -8,7 +8,7 @@ public class L2Functions {
 		parameterFunction(3);			// This calls a function below named parameterFunction
 										//		providing a value for it to use
 		
-		multParamFunction(3,5,"hi");	// L2Functions can have multiple parameters, separated by commas
+		multParamFunction(3,5,"hi");	// A02Functions can have multiple parameters, separated by commas
 		
 		int num = returnFunction();		// When a functions returns a value, it will replace the function call 
 										//		with the value it returns

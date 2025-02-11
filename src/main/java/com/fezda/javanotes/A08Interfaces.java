@@ -4,7 +4,7 @@ import com.fezda.myclasses.MyInterface;
 import com.fezda.myclasses.MyImplementation1;
 import com.fezda.myclasses.MyImplementation2;
 
-public class L8Interfaces {
+public class A08Interfaces {
 	public static void main (String [] args) {
 		
 		// The interface requires that certain functions be defined in any class that implements it

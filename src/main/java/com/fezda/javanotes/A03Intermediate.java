@@ -3,7 +3,7 @@ package com.fezda.javanotes;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class L3Intermediate {
+public class A03Intermediate {
 	
 	public static void main (String [] args) {
 		advancedMath();

@@ -2,7 +2,7 @@ package com.fezda.javanotes;
 
 import java.util.Scanner;
 
-public class L1Basics {
+public class A01Basics {
 	
 	public static void main (String [] args) {
 
