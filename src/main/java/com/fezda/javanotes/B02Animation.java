@@ -12,15 +12,17 @@ import javax.swing.JFrame;
 import com.fezda.graphics.AnimatableObject;
 import com.fezda.graphics.MyAnimatablePanel;
 import com.fezda.graphics.MyAnimationPanel;
+import com.fezda.graphics.MyKeyInteractionPanel;
 import com.fezda.graphics.MySpriteAnimationPanel;
 import com.fezda.graphics.Sprite;
 
 public class B02Animation {
 	
 	public static void main (String[] args) {
-		//simpleAnimation();		// Move image across screen
-		//spriteAnimation();		// Animate a sprite with frames
-		objectAnimation();			// Pass objects to be animated
+//		simpleAnimation();		// Move image across screen
+//		spriteAnimation();		// Animate a sprite with frames
+//		objectAnimation();		// Pass objects to be animated
+		keyInteraction();		// Use keyboard to interact with window
 	}
 	
 	public static void simpleAnimation () {
@@ -72,5 +74,17 @@ public class B02Animation {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void keyInteraction () {
+		MyKeyInteractionPanel myPanel = new MyKeyInteractionPanel ();			// See graphics:MyKeyInteractionPanel for code
+		myPanel.setPreferredSize( new Dimension(400,400) );	
+		
+		JFrame myFrame = new JFrame();
+		myFrame.add(myPanel);
+		myFrame.pack();
+		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myFrame.setVisible(true);
+		myFrame.setLocationRelativeTo(null);
 	}
 }
