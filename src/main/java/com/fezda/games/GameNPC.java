@@ -1,13 +1,15 @@
-package com.fezda.graphics;
+package com.fezda.games;
 
-public class GameObject {
+import com.fezda.graphics.Sprite;
+
+public class GameNPC {
 	private Sprite sprite;
 	private int x = 0;
 	private int y = 0;
 	private int xVelocity = 0;
 	private int yVelocity = 0;
 	
-	public GameObject(Sprite sprite, int x, int y) {
+	public GameNPC(Sprite sprite, int x, int y) {
 		this.sprite = sprite;
 		this.x = x;
 		this.y = y;
