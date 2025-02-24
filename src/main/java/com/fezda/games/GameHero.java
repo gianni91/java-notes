@@ -21,6 +21,11 @@ public class GameHero {
 		this.y += yVelocity;
 	}
 	
+	public void rebound () {
+		this.x -= xVelocity;
+		this.y -= yVelocity;
+	}
+	
 	public int getX() { return this.x; }
 	public int getY() { return this.y; }
 	public void setXVel(int setTo) { this.xVelocity = setTo; }
