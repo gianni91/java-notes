@@ -1,4 +1,4 @@
-package com.fezda.games;
+package physicsgame;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -15,9 +15,9 @@ import javax.swing.Timer;
 
 
 public class MyPhysGamePanel extends JPanel implements ActionListener {
-	SimpleGameClass game;
+	PhysicsGame game;
 	
-	public MyPhysGamePanel(SimpleGameClass game) {
+	public MyPhysGamePanel(PhysicsGame game) {
 		this.game = game;
 		try {
 			this.setBackground(Color.blue);
@@ -50,15 +50,15 @@ public class MyPhysGamePanel extends JPanel implements ActionListener {
 	public void actionPerformed (ActionEvent event) {
 		
 		// Update the objects (position and sprite frame)
-		for (GameNPC obj : game.getObjects()) {
+		for (PhysGameNPC obj : game.getObjects()) {
 			obj.update();
 		}
 		game.getPlayer1().update();
 		
 		// Handle collisions
-		for (GameNPC obj : game.getObjects()) {
-			if ( Math.abs(obj.getX() - game.getPlayer1().getX()) < 32 &&  Math.abs(obj.getY() - game.getPlayer1().getY()) < 32) {
-				game.getPlayer1().rebound();
+		for (PhysGameNPC obj : game.getObjects()) {
+			if (game.getPlayer1().checkCollision(obj)) {
+				game.getPlayer1().onCollision();
 			}
 		}
 		
@@ -73,7 +73,7 @@ public class MyPhysGamePanel extends JPanel implements ActionListener {
 		g.drawImage(game.getPlayer1().getSprite().getFrame(), game.getPlayer1().getX(), game.getPlayer1().getY(), null);
 		
 		// Display NPCs
-		for (GameNPC obj : game.getObjects()) {
+		for (PhysGameNPC obj : game.getObjects()) {
 			g.drawImage(obj.getSprite().getFrame(), obj.getX(), obj.getY(), null);	
 		}
 	}

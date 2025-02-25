@@ -2,23 +2,13 @@ package com.fezda.javanotes;
 
 
 import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import com.fezda.games.GameNPC;
 import com.fezda.games.MyGamePanel;
-import com.fezda.games.MyPhysGamePanel;
 import com.fezda.games.SimpleGameClass;
-import com.fezda.graphics.AnimatableObject;
-import com.fezda.graphics.MyAnimatablePanel;
-import com.fezda.graphics.MyAnimationPanel;
-import com.fezda.graphics.MyKeyInteractionPanel;
-import com.fezda.graphics.MySpriteAnimationPanel;
-import com.fezda.graphics.Sprite;
+
+import physicsgame.MyPhysGamePanel;
+import physicsgame.PhysicsGame;
 
 public class B03Games {
 	
@@ -44,7 +34,7 @@ public class B03Games {
 	
 	public static void physicsGame () {
 		
-		SimpleGameClass game = new SimpleGameClass();
+		PhysicsGame game = new PhysicsGame();
 		MyPhysGamePanel myPanel = new MyPhysGamePanel (game);
 		myPanel.setPreferredSize( new Dimension(400,400) );	
 		
