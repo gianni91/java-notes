@@ -1,5 +1,6 @@
 package com.fezda.physicsgame;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -73,6 +74,12 @@ public class PhysGamePanel extends JPanel implements ActionListener {
 		for (PhysGameNPC obj : game.getObjects()) {
 			g.drawImage(obj.getSprite().getFrame(), obj.getX(), obj.getY(), null);	
 		}
+		
+		g.setPaint(Color.black);						// Set barrier color
+		for (PhysBarrier obj : game.getBarriers()) {
+			g.fillRect( obj.getX(), obj.getY(), obj.getWidth(),obj.getHeight());	
+		}
+		
 	}
 	
 	
