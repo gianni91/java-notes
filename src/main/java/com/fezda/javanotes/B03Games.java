@@ -6,9 +6,8 @@ import javax.swing.JFrame;
 
 import com.fezda.games.MyGamePanel;
 import com.fezda.games.SimpleGameClass;
-
-import physicsgame.MyPhysGamePanel;
-import physicsgame.PhysicsGame;
+import com.fezda.physicsgame.PhysGamePanel;
+import com.fezda.physicsgame.PhysicsGame;
 
 public class B03Games {
 	
@@ -35,7 +34,7 @@ public class B03Games {
 	public static void physicsGame () {
 		
 		PhysicsGame game = new PhysicsGame();
-		MyPhysGamePanel myPanel = new MyPhysGamePanel (game);
+		PhysGamePanel myPanel = new PhysGamePanel (game);
 		myPanel.setPreferredSize( new Dimension(400,400) );	
 		
 		JFrame myFrame = new JFrame();

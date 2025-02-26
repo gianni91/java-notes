@@ -1,4 +1,4 @@
-package physicsgame;
+package com.fezda.physicsgame;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -14,10 +14,10 @@ import javax.swing.Timer;
 
 
 
-public class MyPhysGamePanel extends JPanel implements ActionListener {
+public class PhysGamePanel extends JPanel implements ActionListener {
 	PhysicsGame game;
 	
-	public MyPhysGamePanel(PhysicsGame game) {
+	public PhysGamePanel(PhysicsGame game) {
 		this.game = game;
 		try {
 			this.setBackground(Color.blue);
@@ -37,13 +37,10 @@ public class MyPhysGamePanel extends JPanel implements ActionListener {
 		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT,0, false), "pressLeft");		// Change false to true for activation on key release, change 0 to InputEvent.SHIFT_DOWN_MASK for shift+key
 		this.getActionMap().put("pressLeft", pressLeftAction	);
 		
-		PressUpAction pressUpAction = new PressUpAction();
-		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_UP,0, false), "pressUp");		// Change false to true for activation on key release, change 0 to InputEvent.SHIFT_DOWN_MASK for shift+key
-		this.getActionMap().put("pressUp", pressUpAction	);
+		PressSpaceAction pressSpaceAction = new PressSpaceAction();
+		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE,0, false), "pressSpace");		// Change false to true for activation on key release, change 0 to InputEvent.SHIFT_DOWN_MASK for shift+key
+		this.getActionMap().put("pressSpace", pressSpaceAction	);
 		
-		PressDownAction pressDownAction = new PressDownAction();
-		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN,0, false), "pressDown");		// Change false to true for activation on key release, change 0 to InputEvent.SHIFT_DOWN_MASK for shift+key
-		this.getActionMap().put("pressDown", pressDownAction	);
 	}
 	
 	@Override
@@ -83,32 +80,21 @@ public class MyPhysGamePanel extends JPanel implements ActionListener {
 	public class PressRightAction extends AbstractAction {
 		@Override
 		public void actionPerformed (ActionEvent ae) {
-			game.getPlayer1().setXVel(6);
-			game.getPlayer1().setYVel(0);
+			game.getPlayer1().onRightKeyPress();
 		}
 	}
 	
 	public class PressLeftAction extends AbstractAction {
 		@Override
 		public void actionPerformed (ActionEvent ae) {
-			game.getPlayer1().setXVel(-6);
-			game.getPlayer1().setYVel(0);
+			game.getPlayer1().onLeftKeyPress();
 		}
 	}
 	
-	public class PressUpAction extends AbstractAction {
+	public class PressSpaceAction extends AbstractAction {
 		@Override
 		public void actionPerformed (ActionEvent ae) {
-			game.getPlayer1().setXVel(0);
-			game.getPlayer1().setYVel(-6);
-		}
-	}
-	
-	public class PressDownAction extends AbstractAction {
-		@Override
-		public void actionPerformed (ActionEvent ae) {
-			game.getPlayer1().setXVel(0);
-			game.getPlayer1().setYVel(6);
+			game.getPlayer1().onSpaceKeyPress();
 		}
 	}
 

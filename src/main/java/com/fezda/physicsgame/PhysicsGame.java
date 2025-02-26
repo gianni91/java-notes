@@ -1,4 +1,4 @@
-package physicsgame;
+package com.fezda.physicsgame;
 
 
 
