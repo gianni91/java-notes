@@ -1,6 +1,5 @@
 package com.fezda.physicsgame;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -53,8 +52,14 @@ public class PhysGamePanel extends JPanel implements ActionListener {
 		}
 		game.getPlayer1().update();
 		
-		// Handle collisions
+		// Handle collisions with NPCs
 		for (PhysGameNPC obj : game.getObjects()) {
+			if (game.getPlayer1().checkCollision(obj)) {
+				game.getPlayer1().onCollision();
+			}
+		}
+		// Handle collisions with barriers
+		for (PhysBarrier obj : game.getBarriers()) {
 			if (game.getPlayer1().checkCollision(obj)) {
 				game.getPlayer1().onCollision();
 			}

@@ -18,7 +18,7 @@ public class PhysGameObj extends PhysObj{
 		this.y += yVelocity;
 	}
 	
-	public boolean checkCollision(PhysGameObj other) {
+	public boolean checkCollision(PhysObj other) {
 		return Math.abs(this.x - other.x) < (this.width/2 + other.width/2) && 
 				Math.abs(this.y - other.y) < (this.height/2 + other.height/2);
 	}
