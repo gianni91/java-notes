@@ -49,7 +49,7 @@ public class PhysGamePanel extends JPanel implements ActionListener {
 		// Update the NPCs (position and sprite frame) and check for collisions
 		for (PhysGameNPC obj : game.getNPCs()) {
 			obj.update();
-			for (PhysObj solid : game.getSolids()) {
+			for (GameObj solid : game.getSolids()) {
 				if (obj != solid) {
 					if (obj.checkCollision(solid)) {
 						obj.onCollision();
@@ -60,7 +60,7 @@ public class PhysGamePanel extends JPanel implements ActionListener {
 		
 		// Update player 1 and check for collisions
 		game.getPlayer1().update();      
-		for (PhysObj solid : game.getSolids()) {
+		for (GameObj solid : game.getSolids()) {
 			if (game.getPlayer1() != solid) {
 				if (game.getPlayer1().checkCollision(solid)) {
 					game.getPlayer1().onCollision();
@@ -84,7 +84,7 @@ public class PhysGamePanel extends JPanel implements ActionListener {
 		}
 		
 		g.setPaint(Color.black);						// Set barrier color
-		for (PhysBarrier obj : game.getBarriers()) {
+		for (Barrier obj : game.getBarriers()) {
 			g.fillRect( obj.getX(), obj.getY(), obj.getWidth(),obj.getHeight());	
 		}
 		

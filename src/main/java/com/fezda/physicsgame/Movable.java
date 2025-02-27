@@ -2,12 +2,12 @@ package com.fezda.physicsgame;
 
 import com.fezda.graphics.Sprite;
 
-public class PhysGameObj extends PhysObj{
+public class Movable extends GameObj{
 	protected Sprite sprite;
 	protected int xVelocity = 0;
 	protected int yVelocity = 0;
 	
-	public PhysGameObj(Sprite sprite, int x, int y, int width, int height) {
+	public Movable(Sprite sprite, int x, int y, int width, int height) {
 		super(x, y, width, height);
 		this.sprite = sprite;
 	}
@@ -18,7 +18,7 @@ public class PhysGameObj extends PhysObj{
 		this.y += yVelocity;
 	}
 	
-	public boolean checkCollision(PhysObj other) {
+	public boolean checkCollision(GameObj other) {
 		return Math.abs(this.x - other.x) < (this.width/2 + other.width/2) && 
 				Math.abs(this.y - other.y) < (this.height/2 + other.height/2);
 	}

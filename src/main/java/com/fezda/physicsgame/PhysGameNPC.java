@@ -2,7 +2,7 @@ package com.fezda.physicsgame;
 
 import com.fezda.graphics.Sprite;
 
-public class PhysGameNPC extends PhysGameObj {
+public class PhysGameNPC extends Movable {
 	
 	public PhysGameNPC(Sprite sprite, int x, int y, int width, int height) {
 		super(sprite, x, y, width, height);

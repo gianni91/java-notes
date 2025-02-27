@@ -15,14 +15,14 @@ import com.fezda.graphics.Sprite;
 public class PhysicsGame {
 	private PhysGameHero player1;
 	private ArrayList<PhysGameNPC> npcs;
-	private ArrayList<PhysBarrier> barriers;
-	private ArrayList<PhysObj> solids;
+	private ArrayList<Barrier> barriers;
+	private ArrayList<GameObj> solids;
 	
 	public PhysicsGame () {
 		try {
 			npcs = new ArrayList<PhysGameNPC>();
-			barriers = new ArrayList<PhysBarrier>();
-			solids = new ArrayList<PhysObj> ();
+			barriers = new ArrayList<Barrier>();
+			solids = new ArrayList<GameObj> ();
 			
 			BufferedImage heroImage = ImageIO.read(new File("demoImage.png"));
 			Sprite heroSprite = new Sprite(heroImage,64,64,1);
@@ -40,8 +40,8 @@ public class PhysicsGame {
 			solids.add(npc1);
 			solids.add(npc2);
 			
-			PhysBarrier b1 = new PhysBarrier(0,0,30,400);
-			PhysBarrier b2 = new PhysBarrier(30,370,370,30);
+			Barrier b1 = new Barrier(0,0,30,400);
+			Barrier b2 = new Barrier(30,370,370,30);
 			barriers.add(b1);
 			barriers.add(b2);
 			solids.add(b1);
@@ -54,6 +54,6 @@ public class PhysicsGame {
 	
 	public PhysGameHero getPlayer1() {return this.player1;}
 	public ArrayList<PhysGameNPC> getNPCs() {return this.npcs;}
-	public ArrayList<PhysBarrier> getBarriers() {return this.barriers;}
-	public ArrayList<PhysObj> getSolids() {return this.solids;}
+	public ArrayList<Barrier> getBarriers() {return this.barriers;}
+	public ArrayList<GameObj> getSolids() {return this.solids;}
 }
