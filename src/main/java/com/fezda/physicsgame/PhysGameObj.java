@@ -26,6 +26,8 @@ public class PhysGameObj extends PhysObj{
 	public void onCollision () {
 		this.x -= xVelocity;
 		this.y -= yVelocity;
+		this.xVelocity = 0;
+		this.yVelocity = 0;
 	}
 	
 	public void setXVel(int setTo) { this.xVelocity = setTo; }

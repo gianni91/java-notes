@@ -46,22 +46,25 @@ public class PhysGamePanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed (ActionEvent event) {
 		
-		// Update the objects (position and sprite frame)
-		for (PhysGameNPC obj : game.getObjects()) {
+		// Update the NPCs (position and sprite frame) and check for collisions
+		for (PhysGameNPC obj : game.getNPCs()) {
 			obj.update();
-		}
-		game.getPlayer1().update();
-		
-		// Handle collisions with NPCs
-		for (PhysGameNPC obj : game.getObjects()) {
-			if (game.getPlayer1().checkCollision(obj)) {
-				game.getPlayer1().onCollision();
+			for (PhysObj solid : game.getSolids()) {
+				if (obj != solid) {
+					if (obj.checkCollision(solid)) {
+						obj.onCollision();
+					}
+				}
 			}
 		}
-		// Handle collisions with barriers
-		for (PhysBarrier obj : game.getBarriers()) {
-			if (game.getPlayer1().checkCollision(obj)) {
-				game.getPlayer1().onCollision();
+		
+		// Update player 1 and check for collisions
+		game.getPlayer1().update();      
+		for (PhysObj solid : game.getSolids()) {
+			if (game.getPlayer1() != solid) {
+				if (game.getPlayer1().checkCollision(solid)) {
+					game.getPlayer1().onCollision();
+				}
 			}
 		}
 		
@@ -76,7 +79,7 @@ public class PhysGamePanel extends JPanel implements ActionListener {
 		g.drawImage(game.getPlayer1().getSprite().getFrame(), game.getPlayer1().getX(), game.getPlayer1().getY(), null);
 		
 		// Display NPCs
-		for (PhysGameNPC obj : game.getObjects()) {
+		for (PhysGameNPC obj : game.getNPCs()) {
 			g.drawImage(obj.getSprite().getFrame(), obj.getX(), obj.getY(), null);	
 		}
 		

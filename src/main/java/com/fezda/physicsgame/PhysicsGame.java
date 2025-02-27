@@ -14,27 +14,38 @@ import com.fezda.graphics.Sprite;
 
 public class PhysicsGame {
 	private PhysGameHero player1;
-	private ArrayList<PhysGameNPC> objects;	// Stores objects to be updated and displayed
-	private ArrayList<PhysBarrier> barriers;	// Stores objects to be updated and displayed
+	private ArrayList<PhysGameNPC> npcs;
+	private ArrayList<PhysBarrier> barriers;
+	private ArrayList<PhysObj> solids;
 	
 	public PhysicsGame () {
 		try {
-			objects = new ArrayList<PhysGameNPC>();
+			npcs = new ArrayList<PhysGameNPC>();
 			barriers = new ArrayList<PhysBarrier>();
+			solids = new ArrayList<PhysObj> ();
 			
 			BufferedImage heroImage = ImageIO.read(new File("demoImage.png"));
 			Sprite heroSprite = new Sprite(heroImage,64,64,1);
 			player1 = new PhysGameHero(heroSprite,150,300,64,64);
 			player1.setXVel(0);
 			player1.setYVel(0);
+			solids.add(player1);
 					
 			BufferedImage spriteSheetImage = ImageIO.read(new File("demoSprite.png"));
 			Sprite sprite = new Sprite(spriteSheetImage,64,64,4);
-			objects.add( new PhysGameNPC(sprite,40,300,64,64));
-			objects.add( new PhysGameNPC(sprite,240,300,64,64));
+			PhysGameNPC npc1 = new PhysGameNPC(sprite,40,300,64,64);
+			PhysGameNPC npc2 = new PhysGameNPC(sprite,240,300,64,64);
+			npcs.add(npc1);
+			npcs.add(npc2);
+			solids.add(npc1);
+			solids.add(npc2);
 			
-			barriers.add( new PhysBarrier(0,0,30,400));
-			barriers.add( new PhysBarrier(30,370,370,30));
+			PhysBarrier b1 = new PhysBarrier(0,0,30,400);
+			PhysBarrier b2 = new PhysBarrier(30,370,370,30);
+			barriers.add(b1);
+			barriers.add(b2);
+			solids.add(b1);
+			solids.add(b2);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -42,6 +53,7 @@ public class PhysicsGame {
 	}
 	
 	public PhysGameHero getPlayer1() {return this.player1;}
-	public ArrayList<PhysGameNPC> getObjects() {return this.objects;}
+	public ArrayList<PhysGameNPC> getNPCs() {return this.npcs;}
 	public ArrayList<PhysBarrier> getBarriers() {return this.barriers;}
+	public ArrayList<PhysObj> getSolids() {return this.solids;}
 }

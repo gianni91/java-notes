@@ -16,7 +16,6 @@ public class PhysGameNPC extends PhysGameObj {
 	
 	public void changeDirection() {
 		this.xVelocity = -2 + (int)(Math.random()*5);
-		this.yVelocity = -2 + (int)(Math.random()*5);
 	}
 	
 	
