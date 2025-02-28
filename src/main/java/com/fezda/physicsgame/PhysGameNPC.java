@@ -1,5 +1,7 @@
 package com.fezda.physicsgame;
 
+import java.util.ArrayList;
+
 import com.fezda.graphics.Sprite;
 
 public class PhysGameNPC extends Movable {
@@ -9,8 +11,8 @@ public class PhysGameNPC extends Movable {
 		changeDirection();
 	}
 	
-	public void update () {
-		super.update();
+	public void update (ArrayList<GameObj> solids) {
+		super.update(solids);
 		if (Math.random() < .1) changeDirection();
 	}
 	
