@@ -22,32 +22,27 @@ public class Movable extends GameObj{
 		this.yVelocity += yAccel;
 		
 		int collisionCheck = 0;
-		for (GameObj other : solids) {
-			if (this != other) {
-				collisionCheck = this.willCollide(other);
-				if (collisionCheck == 1) {
-					this.y += yVelocity;
-					this.xVelocity = 0;
-					return;
-				}
-				else if (collisionCheck == 2) {
-					this.x += xVelocity;
-					this.yVelocity = 0;
-					return;
-				}
-				else if (collisionCheck == 3) {
-					this.xVelocity = 0;
-					this.yVelocity = 0;
-					return;
+		if (xVelocity != 0 || yVelocity != 0) {
+			for (GameObj other : solids) {
+				if (this != other) {
+					collisionCheck = this.willCollide(other);
+					if (collisionCheck == 1) {
+						this.xVelocity = 0;
+					}
+					else if (collisionCheck == 2) {
+						this.yVelocity = 0;
+					}
+					else if (collisionCheck == 3) {
+						this.xVelocity = 0;
+						this.yVelocity = 0;
+						break;
+					}
 				}
 			}
+			this.y += yVelocity;
+			this.x += xVelocity;
 		}
-		this.x += xVelocity;
-		this.y += yVelocity;
-		
 
-		    
-		
 	}
 	
 	public boolean checkCollision(GameObj other) {
