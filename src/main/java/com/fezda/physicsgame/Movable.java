@@ -10,6 +10,7 @@ public class Movable extends GameObj{
 	protected float yVelocity = 0;
 	protected float xAccel = 0;
 	protected float yAccel = 1;
+	protected boolean grounded = false;
 	
 	public Movable(Sprite sprite, int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -22,6 +23,7 @@ public class Movable extends GameObj{
 		this.yVelocity += yAccel;
 		
 		int collisionCheck = 0;
+		this.grounded = false;
 		if (xVelocity != 0 || yVelocity != 0) {
 			for (GameObj other : solids) {
 				if (this != other) {
@@ -31,6 +33,7 @@ public class Movable extends GameObj{
 					}
 					else if (collisionCheck == 2) {
 						this.yVelocity = 0;
+						this.grounded = true;
 					}
 					else if (collisionCheck == 3) {
 						this.xVelocity = 0;
@@ -70,5 +73,6 @@ public class Movable extends GameObj{
 	
 	public void setXVel(int setTo) { this.xVelocity = setTo; }
 	public void setYVel(int setTo) { this.yVelocity = setTo; }
+	//public void setGrounded(boolean setTo) {this.grounded = setTo;}
 	public Sprite getSprite() { return this.sprite; }
 }

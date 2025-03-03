@@ -19,7 +19,10 @@ public class PhysGameHero extends Movable{
 	}
 	
 	public void onSpaceKeyPress() {
-		this.setYVel(-6);
+		if (this.grounded) {
+			this.setYVel(-14);
+		}
 	}
+	
 	
 }

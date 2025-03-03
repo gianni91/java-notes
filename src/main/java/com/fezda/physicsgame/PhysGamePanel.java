@@ -69,16 +69,19 @@ public class PhysGamePanel extends JPanel implements ActionListener {
 		super.paint(g);
 		
 		// Display player 1
-		g.drawImage(game.getPlayer1().getSprite().getFrame(), game.getPlayer1().getX(), game.getPlayer1().getY(), null);
+		g.drawImage(game.getPlayer1().getSprite().getFrame(), 
+				game.getPlayer1().getX() -  game.getPlayer1().getWidth()/2, 
+				game.getPlayer1().getY() -  game.getPlayer1().getHeight()/2, 
+				null);
 		
 		// Display NPCs
 		for (PhysGameNPC obj : game.getNPCs()) {
-			g.drawImage(obj.getSprite().getFrame(), obj.getX(), obj.getY(), null);	
+			g.drawImage(obj.getSprite().getFrame(), obj.getX() - obj.getWidth()/2, obj.getY() - obj.getHeight()/2, null);	
 		}
 		
 		g.setPaint(Color.black);						// Set barrier color
 		for (Barrier obj : game.getBarriers()) {
-			g.fillRect( obj.getX(), obj.getY(), obj.getWidth(),obj.getHeight());	
+			g.fillRect( obj.getX() - obj.getWidth()/2, obj.getY() - obj.getHeight()/2, obj.getWidth(),obj.getHeight());	
 		}
 		
 	}
