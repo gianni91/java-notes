@@ -24,28 +24,39 @@ public class Movable extends GameObj{
 		
 		int collisionCheck = 0;
 		this.grounded = false;
+		
 		if (xVelocity != 0 || yVelocity != 0) {
 			for (GameObj other : solids) {
 				if (this != other) {
 					collisionCheck = this.willCollide(other);
-					if (collisionCheck == 1) {
-						this.xVelocity = 0;
-					}
-					else if (collisionCheck == 2) {
+					if (collisionCheck == 1) {			// collision above
 						this.yVelocity = 0;
+						this.y = other.y + this.height/2 + other.height/2;
+					}
+					else if (collisionCheck == 3) {		// collision below
+						this.yVelocity = 0;
+						this.y = other.y - this.height/2 - other.height/2;
 						this.grounded = true;
 					}
-					else if (collisionCheck == 3) {
+					
+					if (collisionCheck == 2) {		// collision on right
+						this.xVelocity = 0;
+						this.x = other.x - this.width/2 - other.width/2;
+					}
+					else if (collisionCheck == 4) {		// collision on left
+						this.xVelocity = 0;
+						this.x = other.x + this.width/2 + other.width/2;
+					}
+					else if (collisionCheck == 5) {		// collision diagonal
 						this.xVelocity = 0;
 						this.yVelocity = 0;
 						break;
 					}
 				}
 			}
-			this.y += yVelocity;
 			this.x += xVelocity;
+			this.y += yVelocity;
 		}
-
 	}
 	
 	public boolean checkCollision(GameObj other) {
@@ -57,9 +68,15 @@ public class Movable extends GameObj{
 		if (Math.abs(this.x + this.xVelocity - other.x) < (this.width/2 + other.width/2) && 
 				Math.abs(this.y + this.yVelocity - other.y) < (this.height/2 + other.height/2)) 
 		{
-			if (Math.abs(this.y - other.y) < (this.height/2 + other.height/2)) return 1;		// Horizontal collision
-			else if (Math.abs(this.x - other.x) < (this.width/2 + other.width/2)) return 2;		// Vertical collision
-			else return 3; 																		// Diagonal collision
+			if (Math.abs(this.y - other.y) < (this.height/2 + other.height/2)) {
+				if (this.xVelocity > 0) return 2;												// Collision on right
+				else return 4;																	// Collision on left
+			}
+			else if (Math.abs(this.x - other.x) < (this.width/2 + other.width/2)) {
+				if (this.yVelocity < 0) return 1;												// Collision above
+				else return 3;																	// Collision below
+			}
+			else return 5; 																		// Diagonal collision
 		}
 		return 0;																				// No collision
 	}

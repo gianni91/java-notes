@@ -49,13 +49,6 @@ public class PhysGamePanel extends JPanel implements ActionListener {
 		// Update the NPCs (position and sprite frame) and check for collisions
 		for (PhysGameNPC obj : game.getNPCs()) {
 			obj.update(game.getSolids());
-			for (GameObj solid : game.getSolids()) {
-				if (obj != solid) {
-					if (obj.checkCollision(solid)) {
-						obj.onCollision();
-					}
-				}
-			}
 		}
 		
 		// Update player 1 and check for collisions
