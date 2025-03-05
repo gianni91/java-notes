@@ -8,21 +8,4 @@ public class PhysGameHero extends Movable{
 		super(sprite, x, y, width, height);
 	}
 	
-	public void onLeftKeyPress() {
-		this.setXVel(-6);
-		this.setYVel(0);
-	}
-	
-	public void onRightKeyPress() {
-		this.setXVel(6);
-		this.setYVel(0);
-	}
-	
-	public void onSpaceKeyPress() {
-		if (this.grounded) {
-			this.setYVel(-14);
-		}
-	}
-	
-	
 }

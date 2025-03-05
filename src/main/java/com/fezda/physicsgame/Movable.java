@@ -29,25 +29,29 @@ public class Movable extends GameObj{
 			for (GameObj other : solids) {
 				if (this != other) {
 					collisionCheck = this.willCollide(other);
-					if (collisionCheck == 1) {			// collision above
+					// If collision above
+					if (collisionCheck == 1) {
 						this.yVelocity = 0;
 						this.y = other.y + this.height/2 + other.height/2;
 					}
-					else if (collisionCheck == 3) {		// collision below
+					// If collision below
+					else if (collisionCheck == 3) {
 						this.yVelocity = 0;
 						this.y = other.y - this.height/2 - other.height/2;
 						this.grounded = true;
 					}
-					
-					if (collisionCheck == 2) {		// collision on right
+					// If collision on right
+					if (collisionCheck == 2) {
 						this.xVelocity = 0;
 						this.x = other.x - this.width/2 - other.width/2;
 					}
-					else if (collisionCheck == 4) {		// collision on left
+					// If collision on left
+					else if (collisionCheck == 4) { 
 						this.xVelocity = 0;
 						this.x = other.x + this.width/2 + other.width/2;
 					}
-					else if (collisionCheck == 5) {		// collision diagonal
+					// If collision is diagonal
+					else if (collisionCheck == 5) {
 						this.xVelocity = 0;
 						this.yVelocity = 0;
 						break;
@@ -81,15 +85,7 @@ public class Movable extends GameObj{
 		return 0;																				// No collision
 	}
 	
-	public void onCollision () {
-		this.x -= xVelocity;
-		this.y -= yVelocity;
-		this.xVelocity = 0;
-		this.yVelocity = 0;
-	}
-	
 	public void setXVel(int setTo) { this.xVelocity = setTo; }
 	public void setYVel(int setTo) { this.yVelocity = setTo; }
-	//public void setGrounded(boolean setTo) {this.grounded = setTo;}
 	public Sprite getSprite() { return this.sprite; }
 }
