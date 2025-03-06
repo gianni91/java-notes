@@ -1,5 +1,6 @@
 package com.fezda.games;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -30,6 +31,44 @@ public class SimpleGameClass {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void update () {
+		// Update the objects (position and sprite frame)
+		for (GameNPC obj : objects) {
+			obj.update();
+		}
+		player1.update();
+	}
+	
+	public void display (Graphics2D g) {
+		// Display player 1
+		g.drawImage(player1.getSprite().getFrame(), player1.getX(), player1.getY(), null);
+		
+		// Display GameObjects
+		for (GameNPC obj : objects) {
+			g.drawImage(obj.getSprite().getFrame(), obj.getX(), obj.getY(), null);	
+		}
+	}
+	
+	public void onLeftKeyPress() {
+		player1.setXVel(-6);
+		player1.setYVel(0);
+	}
+	
+	public void onRightKeyPress() {
+		player1.setXVel(6);
+		player1.setYVel(0);
+	}
+	
+	public void onUpKeyPress() {
+		player1.setXVel(0);
+		player1.setYVel(6);
+	}
+	
+	public void onDownKeyPress() {
+		player1.setXVel(0);
+		player1.setYVel(-6);
 	}
 	
 	public GameHero getPlayer1() {return this.player1;}

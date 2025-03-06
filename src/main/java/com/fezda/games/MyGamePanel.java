@@ -48,27 +48,14 @@ public class MyGamePanel extends JPanel implements ActionListener {
 	
 	@Override
 	public void actionPerformed (ActionEvent event) {
-		
-		// Update the objects (position and sprite frame)
-		for (GameNPC obj : game.getObjects()) {
-			obj.update();
-		}
-		game.getPlayer1().update();
-		
+		game.update();
 		repaint();
 	}
 	
 	public void paint (Graphics gra) {
 		Graphics2D g = (Graphics2D) gra;
 		super.paint(g);
-		
-		// Display player 1
-		g.drawImage(game.getPlayer1().getSprite().getFrame(), game.getPlayer1().getX(), game.getPlayer1().getY(), null);
-		
-		// Display NPCs
-		for (GameNPC obj : game.getObjects()) {
-			g.drawImage(obj.getSprite().getFrame(), obj.getX(), obj.getY(), null);	
-		}
+		game.display(g);
 	}
 	
 	
@@ -76,32 +63,28 @@ public class MyGamePanel extends JPanel implements ActionListener {
 	public class PressRightAction extends AbstractAction {
 		@Override
 		public void actionPerformed (ActionEvent ae) {
-			game.getPlayer1().setXVel(3);
-			game.getPlayer1().setYVel(0);
+			game.onRightKeyPress();
 		}
 	}
 	
 	public class PressLeftAction extends AbstractAction {
 		@Override
 		public void actionPerformed (ActionEvent ae) {
-			game.getPlayer1().setXVel(-3);
-			game.getPlayer1().setYVel(0);
+			game.onLeftKeyPress();
 		}
 	}
 	
 	public class PressUpAction extends AbstractAction {
 		@Override
 		public void actionPerformed (ActionEvent ae) {
-			game.getPlayer1().setXVel(0);
-			game.getPlayer1().setYVel(-3);
+			game.onUpKeyPress();
 		}
 	}
 	
 	public class PressDownAction extends AbstractAction {
 		@Override
 		public void actionPerformed (ActionEvent ae) {
-			game.getPlayer1().setXVel(0);
-			game.getPlayer1().setYVel(3);
+			game.onDownKeyPress();
 		}
 	}
 
