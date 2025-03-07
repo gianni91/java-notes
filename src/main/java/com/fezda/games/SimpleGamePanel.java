@@ -14,10 +14,10 @@ import javax.swing.Timer;
 
 
 
-public class MyGamePanel extends JPanel implements ActionListener {
-	SimpleGameClass game;
+public class SimpleGamePanel extends JPanel implements ActionListener {
+	SimpleGame game;
 	
-	public MyGamePanel(SimpleGameClass game) {
+	public SimpleGamePanel(SimpleGame game) {
 		this.game = game;
 		try {
 			this.setBackground(Color.blue);
