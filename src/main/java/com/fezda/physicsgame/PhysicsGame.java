@@ -20,34 +20,27 @@ public class PhysicsGame {
 			barriers = new ArrayList<Barrier>();
 			solids = new ArrayList<GameObj> ();
 			
+			// Create player 1
 			BufferedImage heroImage = ImageIO.read(new File("demoImage.png"));
 			Sprite heroSprite = new Sprite(heroImage,64,64,1);
 			player1 = new PhysGameHero(heroSprite,200,300,64,64);
 			player1.setXVel(0);
 			player1.setYVel(0);
 			solids.add(player1);
-					
+			
+			// Create NPCs
 			BufferedImage spriteSheetImage = ImageIO.read(new File("demoSprite.png"));
 			Sprite sprite = new Sprite(spriteSheetImage,64,64,4);
 			PhysGameNPC npc1 = new PhysGameNPC(sprite,80,330,64,64);
 			npcs.add(npc1);
 			solids.add(npc1);
 			
-			Barrier leftWall = new Barrier(0,0,30,400);
-			Barrier floor = new Barrier(30,370,370,30);
-			Barrier rightWall = new Barrier(370,0,400,400);
-			Barrier platform1 = new Barrier(250,270,150,30);
-			Barrier platform2 = new Barrier(0,190,150,30);
-			barriers.add(leftWall);
-			barriers.add(floor);
-			barriers.add(rightWall);
-			barriers.add(platform1);
-			barriers.add(platform2);
-			solids.add(leftWall);
-			solids.add(floor);
-			solids.add(rightWall);
-			solids.add(platform1);
-			solids.add(platform2);
+			// Create walls and platforms
+			addBarrier(0,0,30,400);		// Left Wall
+			addBarrier(30,370,370,30);	// Floor
+			addBarrier(370,0,400,400);	// Right Wall
+			addBarrier(250,270,150,30);	// Platform 1
+			addBarrier(0,190,150,30);	// Platform 2
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -96,6 +89,12 @@ public class PhysicsGame {
 		if (player1.grounded) {
 			player1.setYVel(-16);
 		}
+	}
+	
+	public void addBarrier(int topLeftX, int topLeftY, int width, int height) {
+		Barrier toAdd = new Barrier(topLeftX, topLeftY, width, height);
+		barriers.add(toAdd);
+		solids.add(toAdd);
 	}
 	
 	public PhysGameHero getPlayer1() {return this.player1;}
