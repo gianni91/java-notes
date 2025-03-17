@@ -1,9 +1,6 @@
 package com.fezda.graphics;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-
-import javax.imageio.ImageIO;
 
 public class Sprite {
 	private BufferedImage spriteSheetImage;
