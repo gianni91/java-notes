@@ -1,13 +1,10 @@
 package com.fezda.games;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
+import java.awt.Image;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-
-import com.fezda.graphics.Sprite;
+import javax.swing.ImageIcon;
 
 public class SimpleGame {
 	private Hero player1;
@@ -16,16 +13,14 @@ public class SimpleGame {
 	public SimpleGame () {
 		try {
 			// Initialize player 1
-			BufferedImage heroImage = ImageIO.read(new File("demoImage.png"));
-			Sprite heroSprite = new Sprite(heroImage,64,64,1);
+			Image heroSprite = new ImageIcon("demoImage.png").getImage();
 			player1 = new Hero(heroSprite,100,100);
 			
 			// Initialize 2 collectables
 			collectables = new ArrayList<Collectable>();
-			BufferedImage spriteSheetImage = ImageIO.read(new File("collectable.png"));
-			Sprite sprite = new Sprite(spriteSheetImage,64,64,1);
-			collectables.add( new Collectable(sprite,40,30));
-			collectables.add( new Collectable(sprite,140,230));
+			Image colSprite = new ImageIcon("collectable.png").getImage();
+			collectables.add( new Collectable(colSprite,40,30));
+			collectables.add( new Collectable(colSprite,140,230));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -50,9 +45,9 @@ public class SimpleGame {
 	// Display game objects and player 1
 	public void display (Graphics2D g) {
 		for (Collectable obj : collectables) {
-			g.drawImage(obj.getSprite().getFrame(), obj.getX(), obj.getY(), null);	
+			g.drawImage(obj.getSprite(), obj.getX(), obj.getY(), null);	
 		}
-		g.drawImage(player1.getSprite().getFrame(), player1.getX(), player1.getY(), null);
+		g.drawImage(player1.getSprite(), player1.getX(), player1.getY(), null);
 	}
 	
 	// Define actions for direction keys

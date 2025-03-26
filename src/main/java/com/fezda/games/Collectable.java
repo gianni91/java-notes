@@ -1,13 +1,13 @@
 package com.fezda.games;
 
-import com.fezda.graphics.Sprite;
+import java.awt.Image;
 
 public class Collectable {
-	private Sprite sprite;
+	private Image sprite;
 	private int x = 0;
 	private int y = 0;
 	
-	public Collectable(Sprite sprite, int x, int y) {
+	public Collectable(Image sprite, int x, int y) {
 		this.sprite = sprite;
 		this.x = x;
 		this.y = y;
@@ -17,6 +17,5 @@ public class Collectable {
 	public int getY() { return this.y; }
 	public void setX (int setTo) {this.x = setTo;}
 	public void setY (int setTo) {this.y = setTo;}
-	public Sprite getSprite() { return this.sprite; }
-	
+	public Image getSprite() { return this.sprite; }
 }
