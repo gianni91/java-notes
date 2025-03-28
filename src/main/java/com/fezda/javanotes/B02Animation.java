@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import com.fezda.graphics.AnimatableObject;
 import com.fezda.graphics.MyAnimatablePanel;
@@ -19,35 +20,31 @@ import com.fezda.graphics.Sprite;
 public class B02Animation {
 	
 	public static void main (String[] args) {
-//		simpleAnimation();		// Move image across screen
+		simpleAnimation();		// Move image across screen
 //		spriteAnimation();		// Animate a sprite with frames
 //		objectAnimation();		// Pass objects to be animated
-		keyInteraction();		// Use keyboard to interact with window
 	}
 	
-	public static void simpleAnimation () {
-		MyAnimationPanel myPanel = new MyAnimationPanel ();			// See graphics:MyAnimationPanel for animation code
-		myPanel.setPreferredSize( new Dimension(400,400) );	
-		
+	public static void setUpFrame (JPanel panel) {
 		JFrame myFrame = new JFrame();
-		myFrame.add(myPanel);
+		myFrame.add(panel);
 		myFrame.pack();
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myFrame.setVisible(true);
 		myFrame.setLocationRelativeTo(null);
+	}
+	
+	public static void simpleAnimation () {
+		MyAnimationPanel myPanel = new MyAnimationPanel ();				// See graphics:MyAnimationPanel for animation code
+		myPanel.setPreferredSize( new Dimension(400,400) );	
+		setUpFrame(myPanel);
 	}
 	
 
 	public static void spriteAnimation () {
-		MySpriteAnimationPanel myPanel = new MySpriteAnimationPanel ();			// See graphics:MySpriteAnimationPanel for animation code
+		MySpriteAnimationPanel myPanel = new MySpriteAnimationPanel ();	// See graphics:MySpriteAnimationPanel for animation code
 		myPanel.setPreferredSize( new Dimension(400,400) );	
-		
-		JFrame myFrame = new JFrame();
-		myFrame.add(myPanel);
-		myFrame.pack();
-		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		myFrame.setVisible(true);
-		myFrame.setLocationRelativeTo(null);
+		setUpFrame(myPanel);
 	}
 	
 	public static void objectAnimation () {
@@ -56,35 +53,16 @@ public class B02Animation {
 			
 			// Make objects designed to be displayed by our panel
 			ArrayList<AnimatableObject> objects = new ArrayList<AnimatableObject>(); 
-			Sprite sprite = new Sprite(spriteSheetImage,64,64,4);	// See graphics:Sprite.java, encapsulates animation frame selection
-			objects.add( new AnimatableObject(sprite,40,30));		// See graphics:AnimatableObject.java, object can update position
+			Sprite sprite = new Sprite(spriteSheetImage,64,64,4);		 // See graphics:Sprite.java, encapsulates animation frame selection
+			objects.add( new AnimatableObject(sprite,40,30));			 // See graphics:AnimatableObject.java, object can update position
 			objects.add( new AnimatableObject(sprite,140,230));
 			
-			
-			MyAnimatablePanel myPanel = new MyAnimatablePanel (objects);	// See graphics:MyAnimatablePanel.java
+			MyAnimatablePanel myPanel = new MyAnimatablePanel (objects); // See graphics:MyAnimatablePanel.java
 			myPanel.setPreferredSize( new Dimension(400,400) );	
-			
-			JFrame myFrame = new JFrame();
-			myFrame.add(myPanel);
-			myFrame.pack();
-			myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			myFrame.setVisible(true);
-			myFrame.setLocationRelativeTo(null);
+			setUpFrame(myPanel);
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static void keyInteraction () {
-		MyKeyInteractionPanel myPanel = new MyKeyInteractionPanel ();			// See graphics:MyKeyInteractionPanel for code
-		myPanel.setPreferredSize( new Dimension(400,400) );	
-		
-		JFrame myFrame = new JFrame();
-		myFrame.add(myPanel);
-		myFrame.pack();
-		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		myFrame.setVisible(true);
-		myFrame.setLocationRelativeTo(null);
 	}
 }
