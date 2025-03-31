@@ -12,13 +12,19 @@ import javax.swing.JPanel;
 
 
 public class MyMouseInteractionPanel extends JPanel implements MouseListener, MouseMotionListener {
-	private int x = 100;
-	private int y = 100;
+	private int clickX = 0;
+	private int clickY = 0;
 	
+	private boolean dragging = false;
+	private int startX = 0;
+	private int startY = 0;
+	private int endX = 0;
+	private int endY = 0;
+		
 	public MyMouseInteractionPanel( ) {
 		this.setBackground(Color.blue);
-		this.addMouseListener(this);
-		this.addMouseMotionListener(this);
+		this.addMouseListener(this);			// For mouseClicked, mousePressed, mouseReleased, mouseEntered, mouseExited
+		this.addMouseMotionListener(this);		// For mouseMoved and mouseDragged
 	}
 
 	public void paint (Graphics gra) {
@@ -27,33 +33,59 @@ public class MyMouseInteractionPanel extends JPanel implements MouseListener, Mo
 		g.setPaint(Color.black);
 		g.setFont(new Font("Serif",Font.PLAIN,40));
 		
+		g.drawString("Click and Drag", 10, 40);
+		
 		// Displays at last clicked position
-		g.drawString("Click", x,y);			
+		g.drawString(".", clickX, clickY);
+		
+		// Draws rectangle when dragged
+		if (dragging) {
+			g.drawRect(startX, startY, endX-startX, endY-startY);
+		}
 	}
 	
+	
+	/****************************************
+	 * Functions for MouseListener
+	 ***************************************/
 	@Override
 	public void mouseClicked (MouseEvent me) {
-		x = me.getX();
-		y = me.getY();
+		clickX = me.getX();
+		clickY = me.getY();
 		this.repaint();
 	}
-	
 	@Override
-	public void mousePressed (MouseEvent me) {}
-	
+	public void mousePressed (MouseEvent me) {
+		startX = me.getX();
+		startY = me.getY();
+	}
 	@Override
-	public void mouseReleased (MouseEvent me) {}
-	
+	public void mouseReleased (MouseEvent me) {
+		dragging = false;
+	}
 	@Override
-	public void mouseEntered (MouseEvent me) {}
-	
+	public void mouseEntered (MouseEvent me) {
+		// Called when mouse enters panel with listener
+	}
 	@Override
-	public void mouseExited (MouseEvent me) {}
+	public void mouseExited (MouseEvent me) {
+		// Called when mouse exits panel with listener
+	}
 	
-	@Override
-	public void mouseMoved (MouseEvent me) {}
 	
+	/****************************************
+	 * Functions for MouseMotionListener
+	 ***************************************/
 	@Override
-	public void mouseDragged (MouseEvent me) {}
+	public void mouseMoved (MouseEvent me) {
+		// Called when mouse is moved
+	}
+	@Override
+	public void mouseDragged (MouseEvent me) {
+		dragging = true;
+		endX = me.getX();
+		endY = me.getY();
+		this.repaint();
+	}
 
 }
